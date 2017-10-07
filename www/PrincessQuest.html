@@ -1,0 +1,131 @@
+<html>
+<head>
+  <title>Princess Quest II</title>
+    <script type="text/javascript" src="PrincessQuest.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script> <!-- IE11 and Android native browser support -->
+	<script src="./dist/sweetalert2.js"></script>
+	<link rel="stylesheet" href="./dist/sweetalert2.min.css">
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="450" style="border:1px solid black;" tabindex="1">
+        <!--Background-->
+		<img id="background" src="Background.png" alt="Background Image" width="800px" height="362px"/>
+		<img id="exitDoor" src="exit.png" alt="Exit Door"/>
+		<img id="closedDoor" src="closedDoor.png" alt="Closed Door"/>
+		<img id="openDoorLeft" src="openDoorLeft.png" alt="Open Door Left"/>
+		<img id="openDoorRight" src="openDoorRight.png" alt="Open Door Right"/>
+		<img id="finalDoor" src="finalDoor.png" alt="Final Door"/>
+		
+		<!--Sprites Section-->
+		<!--Wizard Sprites-->
+		<img id="wizardIdle" src="wizardIdle.png" alt="Idle Wizard" width="50px" height="100px"/>
+		<img id="wizardIdle2" src="wizardIdle2.png" alt="Idle Wizard 2" width="50px" height="100px"/>
+		<img id="wizardIdle3" src="wizardIdle3.png" alt="Idle Wizard 3" width="50px" height="100px"/>
+		
+		<!--Knight Sprites-->
+		<img id="knightR" src="knightR.png" alt="Knight Right" width="50px" height="100px"/>
+		<img id="knightL" src="knightL.png" alt="Knight Left" width="50px" height="100px"/>
+		<img id="knightIR" src="knightIdleR.png" alt="Knight Idle Left" width="50px" height="100px"/>
+		<img id="knightIL" src="knightIdleL.png" alt="Knight Idle Left" width="50px" height="100px"/>
+		<img id="knightAR" src="knightAttackR.png" alt="Knight Attack Right" width="50px" height="100px"/>
+		<img id="knightAL" src="knightAttackL.png" alt="Knight Attack Left" width="50px" height="100px"/>
+		
+		<!--Princess Sprites-->
+		<img id="princessCry" src="princessCry.png" alt="Princess Left" width="50px" height="100px"/>
+		<img id="princessLstand" src="princessLstand.png" alt="Princess Left Standing" width="50px" height="100px"/>
+		<img id="princessLove" src="princessLove.png" alt="Princess in Love" width="50px" height="100px"/>
+		
+		
+		<!-- Comment: Load other images here -->
+		<!--Knight to Wizard Speech Bubbles-->
+		<img id="knightSpeech0" src="KNPR0.png" alt="Knight Speech Default" width="50px" height="100px"/>
+		<img id="KN2WIZ1" src="KNWZ1.png" alt="Knight Speech Bubble" width="50px" height="100px"/>
+		<img id="KN2WIZ2" src="KNWZ2.png" alt="Knight Speech Bubble2" width="50px" height="100px"/>
+		
+		<!--Wizard to Knight Speech Bubbles-->
+		<img id="WIZ2KN1" src="WZKN1.png" alt="Knight Speech" width="50px" height="100px"/>
+		<img id="WIZ2KN2" src="WZKN2.png" alt="Knight Speech" width="50px" height="100px"/>
+		<img id="WIZ2KN3" src="WZKN3.png" alt="Knight Speech" width="50px" height="100px"/>
+		
+		<img id="WizCorrect" src="WZKNCorrect.png" alt="Knight Speech 1" width="50px" height="100px"/>
+		<img id="WizIncorrect1" src="WZKNIncorrect1.png" alt="Knight Speech 2" width="50px" height="100px"/>
+		<img id="WizIncorrect2" src="WZKNIncorrect2.png" alt="Knight Speech 3" width="50px" height="100px"/>
+		<img id="WizIncorrect3" src="WZKNIncorrect3.png" alt="Knight Speech 4" width="50px" height="100px"/>
+		
+		<!--Challenge Room 1 Images-->
+		<img id="dial1" src="dial1.png" alt="Dial One" width="50px" height="50px"/>
+		<img id="dial2" src="dial2.png" alt="Dial Two" width="50px" height="50px"/>
+		<img id="dial3" src="dial3.png" alt="Dial Three" width="50px" height="50px"/>
+		<img id="dial4" src="dial4.png" alt="Dial Four" width="50px" height="50px"/>
+		<img id="math1" src="math1.png" alt="Question One" width="50px" height="50px"/>
+		<img id="math2" src="math2.png" alt="Question Two" width="50px" height="50px"/>
+		<img id="math3" src="math3.png" alt="Question Three" width="50px" height="50px"/>
+		<img id="math4" src="math4.png" alt="Question Four" width="50px" height="50px"/>
+		<img id="arrow" src="arrow.png" alt="Dial indicator arrow" width="50px" height="50px"/>
+		
+		
+		<!--Memory Room Images-->
+		<img id="sword" src="sword.png" alt="Sword" width="50px" height="50px"/>
+		<img id="swordFound" src="swordFound.png" alt="Sword Found" width="50px" height="50px"/>
+		<img id="mace" src="mace.png" alt="Mace" width="50px" height="50px"/>
+		<img id="maceFound" src="maceFound.png" alt="Mace Found" width="50px" height="50px"/>
+		<img id="axe" src="axe.png" alt="Axe" width="50px" height="50px"/>
+		<img id="axeFound" src="axeFound.png" alt="Axe Found" width="50px" height="50px"/>
+		<img id="hammer" src="hammer.png" alt="Hammer" width="50px" height="50px"/>
+		<img id="hammerFound" src="hammerFound.png" alt="Hammer Found" width="50px" height="50px"/>
+		<img id="back1" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back2" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back3" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back4" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back5" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back6" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back7" src="back.png" alt="Back" width="50px" height="50px"/>
+		<img id="back8" src="back.png" alt="Back" width="50px" height="50px"/>
+		
+		
+		
+		
+		<!-- Princess to Knight Speech Bubbles-->
+		<img id="PR2KN1" src="PRKN1.png" alt="Princess Speech 1" width="50px" height="100px"/>
+		<img id="PR2KN2" src="PRKN2.png" alt="Princess Speech 2" width="50px" height="100px"/>
+		<img id="PR2KN3" src="PRKN3.png" alt="Princess Speech 3" width="50px" height="100px"/>
+		<img id="PR2KN4" src="PRKN4.png" alt="Princess Speech 4" width="50px" height="100px"/>
+		<img id="PR2KN5" src="PRKN5.png" alt="Princess Speech 5" width="50px" height="100px"/>
+		<img id="PR2KN6" src="PRKN6.png" alt="Princess Speech 6" width="50px" height="100px"/>
+		<img id="PR2KN7" src="PRKN7.png" alt="Princess Speech 7" width="50px" height="100px"/>
+		<img id="PRKNcorrect" src="PRKNcorrect.png" alt="Princess Speech 7" width="50px" height="100px"/>
+		<img id="PRKNincorrect" src="PRKNincorrect.png" alt="Princess Speech 7" width="50px" height="100px"/>
+		
+		<!--Knight to Princess Speech Bubbles-->
+		<img id="knightSpeech0" src="KNPR0.png" alt="Knight Speech Default" width="50px" height="100px"/>
+		<img id="knightSpeech1" src="KNPR1.png" alt="Knight Speech Bubble" width="50px" height="100px"/>
+		<img id="knightSpeech2" src="KNPR2.png" alt="Knight Speech Bubble2" width="50px" height="100px"/>
+		<img id="knightSpeech3" src="KNPR3.png" alt="Knight Speech Bubble3" width="50px" height="100px"/>
+		
+		<!--Dates Room Images-->
+		<img id="berlin" src="Berlin.png" alt="Berlin Date" width="50px" height="100px"/>
+		<img id="BoH" src="BoH.png" alt="BoH Date" width="50px" height="100px"/>
+		<img id="london" src="London.png" alt="London Date" width="50px" height="100px"/>
+		<img id="moon" src="Moon.png" alt="Moon Date" width="50px" height="100px"/>
+		<img id="timeline" src="timeline.png" alt="time linefor date" width="50px" height="100px"/>
+		
+		<!--Final Room Images-->
+		<img id="success1" src="success.png" alt="Success Banner 1" width="50px" height="100px"/>
+		<img id="success2" src="success2.png" alt="Success Banner 2" width="50px" height="100px"/>
+		
+		
+		<audio id="failedMusic">
+				<source src="wrong.mp3" type="audio/mp3">	
+		</audio>
+		
+    </canvas>
+    <p id="debug"></p>
+	<p id="debug1"></p>
+	<p id="debug2"></p>
+	<p id="debug3"></p>
+	
+
+	<p id="DesiredX"></p>
+</body>
+
+</html>
